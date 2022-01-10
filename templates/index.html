@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>AlgoRoyalty: NFT royalties with ease!</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+</head>
+<body>
+<main class="container lighten" id="home" >
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="/" style="color:#4ABDAC;">AlgoRoyalty</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	</div>
+</nav>
+	<div class="alert alert-danger" role="alert" v-if='error'>
+		[[error]]
+	</div>
+	<div class="container col-xl-10 ">
+		<div class="row align-items-center g-lg-5 py-5">
+			<div class="col-lg-7 text-center text-lg-start">
+				<h1 class="display-4 fw-bold lh-1 mb-3" style="color:#4ABDAC;">AlgoRoyalty: NFT royalties with ease!</h1>
+				<img src="{{ url_for('static', filename= 'images/algorand.jpeg') }}" class="card-img-top" alt="Algorand">
+			</div>
+			<div class="col-md-10 mx-auto col-lg-5">
+				<form class="p-4 p-md-5 border rounded-3 bg-light">
+					<div class="form-floating mb-3">
+						<textarea type="text" rows="3" style="height:100%;" class="form-control" id="floatingInput" placeholder="name@example.com" v-model="publickey"></textarea>
+						<label for="floatingInput">Account address</label>
+					</div>
+					<div class="form-floating mb-3">
+						<textarea type="text" rows="6" style="height:100%;" class="form-control" id="floatingInput" placeholder="name@example.com" v-model="passphrase"></textarea>
+						<label for="floatingInput">Passphrase</label>
+					</div>
+					<div class="form-floating mb-3">
+						<button class="w-100 btn btn-lg btn-primary" type="button"  v-on:click="logIn">Log In</button>
+					</div>
+					<div class="form-floating mb-3">
+						<button class="w-100 btn btn-lg btn-secondary" type="button"  v-on:click="createAccount">Sign up</button>
+					</div>
+					<hr class="my-4">
+					<small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="accordion" id="accordionPanelsStayOpenExample" v-if="account">
+	<div class="accordion-item">
+		<h2 class="accordion-header" id="panelsStayOpen-headingOne">
+			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+				Passphrase(Sign-in key)
+			</button>
+		</h2>
+		<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+			<div class="accordion-body">
+				<strong>This is your Passphrase(Sign-in key). You can use this to sign in in future. This will be required for creating and managing NFTs. Loosing your Sign-in key means loosing all your finds and NFTs. Keep it safe.</strong> 
+				<div>
+					<code>[[account.passphrase]]</code>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="accordion-item">
+		<h2 class="accordion-header" id="panelsStayOpen-headingOne">
+			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+				Account address(Public key)
+			</button>
+		</h2>
+		<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+			<div class="accordion-body">
+				<strong>This is your Account address(Public key). You can use this address to collect funds and buy NFTs.</strong> 
+				<div>
+					<code>[[account.publickey]]</code>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</main>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-cookies@1.7.4/vue-cookies.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+						integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+						crossOrigin="anonymous"></script>
+<script src="{{ url_for('static', filename= 'scripts/home.js') }}"></script>
+<script src="{{ url_for('static', filename= 'scripts/common.js') }}"></script>
+</html>
