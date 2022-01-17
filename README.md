@@ -24,7 +24,7 @@ Algorand Sandbox: https://github.com/algorand/sandbox
 
 `pip install py-algorand-sdk`
 
-`pip install ipfshttpclient`
+`pip install ipfshttpclient==0.8.0a2`
 
 `pip install pyteal`
 
