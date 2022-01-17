@@ -100,7 +100,8 @@ var myassets = new Vue({
       if (this.royalty.state === 0) {
         return {
           'state': 0,
-          'royalty_groups': []
+          'royalty_groups': [],
+          'chain_groups': []
         }
       }
       if (this.royalty.state === 1 || this.royalty.state === 2) {
